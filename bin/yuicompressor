@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper for yui compressor
+java -jar ~/.yuicompressor/yuicompressor-latest.jar

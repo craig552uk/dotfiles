@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper script for ga_reports.py
+/usr/bin/python ~/Dropbox/dev/python/ga_report/ga_report.py $*
