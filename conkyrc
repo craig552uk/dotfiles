@@ -1,0 +1,73 @@
+# Conky settings #
+background no
+update_interval 5 
+double_buffer yes
+no_buffers yes
+imlib_cache_size 0
+
+# Window specifications #
+own_window yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_title 
+own_window_transparent yes
+minimum_size 300
+
+# Alignment #
+alignment tr
+gap_x 50
+gap_y 50
+
+border_inner_margin 15
+border_outer_margin 0
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftalpha 0
+xftfont Open Sans Light:size=10
+override_utf8_locale yes
+default_color CCC
+
+
+TEXT
+$hr
+Load: ${loadavg 1}, ${loadavg 2}, ${loadavg 3} ${alignr}Uptime: ${uptime}
+${loadgraph 35}
+$hr
+RAM: ${memperc}%  ${alignr}${mem} / ${memmax}
+${membar 4}
+Swap: ${swapperc}% ${alignr}${swap} / ${swapmax}
+${swapbar 4}
+$hr
+CPU1  ${goto 60}${cpubar cpu1 5,235} ${alignr}${cpu cpu1}%
+CPU2  ${goto 60}${cpubar cpu2 5,235} ${alignr}${cpu cpu2}%
+CPU3  ${goto 60}${cpubar cpu3 5,235} ${alignr}${cpu cpu3}%
+CPU4  ${goto 60}${cpubar cpu4 5,235} ${alignr}${cpu cpu4}%
+Total ${goto 60}${cpubar cpu0 5,235} ${alignr}${cpu cpu0}%
+$hr
+Disk
+ / ${goto 40}${fs_used /} / ${fs_size /}                       ${goto 160}${fs_bar 6 /}
+ M ${goto 40}${fs_used /media/Media} / ${fs_size /media/Media} ${goto 160}${fs_bar 6 /media/Media}
+ s ${goto 40}${swap}/${swapmax}                                ${goto 160}${swapbar 6}
+$hr
+${if_existing /proc/net/route wlan0}Up: ${upspeed wlan0}   ${alignr}Down: ${downspeed wlan0}
+${upspeedgraph wlan0 35,135}               ${alignr}${downspeedgraph wlan0 35,135}
+Sent: ${totalup wlan0} ${alignr}Received: ${totaldown wlan0}${endif}
+${if_existing /proc/net/route eth0}Up: ${upspeed eth0}   ${alignr}Down: ${downspeed eth0}
+${upspeedgraph eth0 35,135}               ${alignr}${downspeedgraph eth0 35,135}
+Sent: ${totalup eth0} ${alignr}Received: ${totaldown eth0}${endif}$hr
+Name             ${goto 150}PID          ${goto 220}CPU%         ${goto 280}MEM%
+${top name 1}    ${goto 150}${top pid 1} ${goto 220}${top cpu 1} ${goto 280}${top mem 1}
+${top name 2}    ${goto 150}${top pid 2} ${goto 220}${top cpu 2} ${goto 280}${top mem 2}
+${top name 3}    ${goto 150}${top pid 3} ${goto 220}${top cpu 3} ${goto 280}${top mem 3}
+${top name 4}    ${goto 150}${top pid 4} ${goto 220}${top cpu 4} ${goto 280}${top mem 4}
+$hr
+BBC Weather - Leicester, UK
+${execi 500 curl  http://open.live.bbc.co.uk/weather/feeds/en/2644668/3dayforecast.rss | grep "<title>" | grep "day" | sed -e 's/.*<title>//g' -e 's/<\/title>.*//g' -e 's/Maximum Temperature/\n    Max/g' -e 's/Minimum Temperature/Min/g' -e 's/y:/y:\n   /g'}
+$hr
