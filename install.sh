@@ -20,7 +20,7 @@ sudo apt-get install --yes python-dev python-pip python-virtualenv
 sudo apt-get install --yes inkscape
 sudo apt-get install --yes gimp
 sudo apt-get install --yes firefox
-sudo apt-get install --yes openjdk-6
+sudo apt-get install --yes openjdk-6-jre
 
 echo "Creating Symlinks to configs ..."
 
