@@ -32,7 +32,9 @@ ln --force --symbolic --verbose $SCRIPT_DIR/irbrc $HOME/.irbrc
 ln --force --symbolic --verbose $SCRIPT_DIR/bashrc $HOME/.bashrc
 
 # Creating symlinks to application configs
+mkdir --parents $HOME/.config/terminator
 ln --force --symbolic --verbose $SCRIPT_DIR/terminator_config $HOME/.config/terminator/config
+mkdir --parents $HOME/.config/inkscape/templates
 ln --force --symbolic --verbose $SCRIPT_DIR/inkscape_default.svg $HOME/.config/inkscape/templates/default.svg
 
 # Creating symlinks to directories
@@ -41,7 +43,7 @@ ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/fonts $HOME/.f
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/icons $HOME/.icons
 
 # Download YUICompressor
-mkdir $HOME/.yuicompressor
+mkdir --parents $HOME/.yuicompressor
 YUI_IN="https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.jar"
 YUI_OUT="$HOME/.yuicompressor/yuicompressor-latest.jar"
 wget --output-document $YUI_OUT $YUI_IN
