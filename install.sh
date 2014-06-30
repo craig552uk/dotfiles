@@ -10,7 +10,7 @@ sudo add-apt-repository --yes ppa:gnome-terminator
 sudo apt-get update
 
 # Install packages
-sudo apt-get install --yes curl git-core vim sublime-text terminator \
+sudo apt-get install --yes curl git-core vim sublime-text terminator conky \
 python-dev python-pip python-virtualenv \
 inkscape gimp firefox openjdk-6
 
