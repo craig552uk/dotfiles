@@ -32,6 +32,12 @@ ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/bin $HOME/bin
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/fonts $HOME/.fonts
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/icons $HOME/.icons
 
+# Download YUICompressor
+mkdir $HOME/.yuicompressor
+$YUI_IN="https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.jar"
+$YUI_OUT="$HOME/.yuicompressor/yuicompressor-latest.jar"
+wget --output-document $YUI_OUT $YUI_IN
+
 # Non PPA packages
 echo "The following packages must be manually installed"
 echo "Google Chrome: https://www.google.com/intl/en/chrome/browser/"
