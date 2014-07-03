@@ -41,6 +41,7 @@ ln --force --symbolic --verbose $SCRIPT_DIR/inkscape_default.svg $HOME/.config/i
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/bin $HOME/bin
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/fonts $HOME/.fonts
 ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/icons $HOME/.icons
+ln --force --symbolic --verbose --no-target-directory $SCRIPT_DIR/help $HOME/.help
 
 # Download YUICompressor
 mkdir --parents $HOME/.yuicompressor

@@ -56,6 +56,9 @@ alias http='python -m SimpleHTTPServer'
 alias encrypt='gpg --encrypt --armour --sign --emit-version'
 alias decrypt='gpg --decrypt'
 
+# Shortcuts to my help documents
+alias help-vim='less ~/.help/vim.txt'
+
 # Awk filters CSV files by default
 alias awk='awk -F "^\"|\"*,\"*|\"$"'
 
