@@ -59,6 +59,9 @@ alias help-vim='less ~/.help/vim.txt'
 # Awk filters CSV files by default
 alias awk='awk -F "^\"|\"*,\"*|\"$"'
 
+# Run nautilus without loading desktop
+#alias nautilus='nautilus --no-desktop'
+
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
