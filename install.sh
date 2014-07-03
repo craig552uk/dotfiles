@@ -4,9 +4,10 @@
 SCRIPT_PATH=`readlink -f "$0"`
 SCRIPT_DIR=`dirname $SCRIPT_PATH`
 
-# Add package repos
-sudo add-apt-repository --yes ppa:webupd8team/sublime-text-2
-sudo add-apt-repository --yes ppa:gnome-terminator
+# Add package repos and update
+sudo add-apt-repository --yes "deb http://http.debian.net/debian wheezy-backports main"
+sudo add-apt-repository --yes "deb http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu trusty main"
+sudo add-apt-repository --yes "deb http://ppa.launchpad.net/gnome-terminator/ppa/ubuntu saucy main"
 sudo apt-get update
 
 # Install packages
