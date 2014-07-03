@@ -20,12 +20,9 @@ set nobackup
 set nowb
 set noswapfile
 
-syntax off
-set background=dark
-let g:solarized_bold=0
-colorscheme default
+syntax on
+colorscheme elflord
 
-set showtabline=2
 map <C-t><up> :tabr<cr>
 map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
