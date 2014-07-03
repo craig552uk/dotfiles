@@ -23,6 +23,8 @@ sudo apt-get install --yes inkscape
 sudo apt-get install --yes gimp
 sudo apt-get install --yes firefox
 sudo apt-get install --yes openjdk-6-jre
+sudo apt-get install --yes gpg
+sudo apt-get install --yes nginx
 
 # Install backports packages
 sudo apt-get -target-release wheezy-backports install --yes i3
