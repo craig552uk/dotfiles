@@ -3,6 +3,7 @@
 Alt+Enter   :: Open terminal
 Alt+d       :: Open menu (for opening applications)
 Alt+Arr     :: Change focus to another window
+Alt+a       :: Change focus to parent container
 Alt+Sft+Arr :: Move window
 Alt+v       :: Split vertically (note blue border)
 Alt+h       :: Split horizontally (note blue border)
