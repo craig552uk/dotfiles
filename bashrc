@@ -55,6 +55,7 @@ alias decrypt='gpg --decrypt'
 
 # Shortcuts to my help documents
 alias help-vim='less ~/.help/vim.txt'
+alias help-i3='less ~/.help/i3.txt'
 
 # Awk filters CSV files by default
 alias awk='awk -F "^\"|\"*,\"*|\"$"'

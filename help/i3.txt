@@ -1,0 +1,38 @@
+== Opening Terminals/Applications and Moving Around ==
+
+Alt+Enter   :: Open terminal
+Alt+d       :: Open menu (for opening applications)
+Alt+Arr     :: Change focus to another window
+Alt+Sft+Arr :: Move window
+Alt+v       :: Split vertically (note blue border)
+Alt+h       :: Split horizontally (note blue border)
+Alt+Sft+q   :: Close window
+
+
+== Changing the Container Layout ==
+
+Alt+e       :: Split horizontally/vertically
+Alt+s       :: Stack windows
+Alt+w       :: Tabbed windows
+Alt+f       :: Toggle fullscreen window
+Alt+Sft+Spc :: Toggle floating window
+
+Resize boundaries with mouse
+
+
+== Using Workspaces ==
+
+Alt+Num     :: Go to workspace NUM
+Alt+Sft+Num :: Move window to workspace NUM
+
+
+=== Session Management ==
+
+Alt+Sft+r   :: Restart i3 session in place
+Alt+Sft+e   :: End session (logout)
+
+
+== Configuration ==
+
+Config file: ~/.i3/config
+User Guide:  http://i3wm.org/docs/userguide.html
