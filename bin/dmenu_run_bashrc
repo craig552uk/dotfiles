@@ -1,0 +1,15 @@
+#!/bin/bash
+# Wrapper for dmenu to include aliases and functions defined in ~/.bashrc
+
+BASHRC="$HOME/.bashrc"
+
+CMD=`(
+	# Load ~/.bashrc in to process scope
+	source $BASHRC
+	# Pass available command to dmenu
+    compgen -c | sort -u | dmenu "$@"
+    # dmenu returns selected command to $CMD
+)`
+
+# Run selected command with ~/.bashrc in scope
+echo -e "source $BASHRC\n $CMD" | bash -O expand_aliases &
