@@ -3,6 +3,10 @@
 # Set up the environment with a series of scripts
 #
 
+# Relative paths
+SCRIPT_PATH=`readlink -f "$0"`
+SCRIPT_DIR=`dirname $SCRIPT_PATH`
+
 # Add apt repositories
 $SCRIPT_DIR/install-apt-repositories.sh
 
