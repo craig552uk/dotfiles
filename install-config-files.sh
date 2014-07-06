@@ -11,6 +11,7 @@ ln --force --symbolic --verbose $SCRIPT_DIR/vimrc $HOME/.vimrc
 ln --force --symbolic --verbose $SCRIPT_DIR/irbrc $HOME/.irbrc
 ln --force --symbolic --verbose $SCRIPT_DIR/bashrc $HOME/.bashrc
 ln --force --symbolic --verbose $SCRIPT_DIR/i3status.conf $HOME/.i3status.conf
+ln --force --symbolic --verbose $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
 
 # Creating symlinks to application configs
 mkdir --parents $HOME/.config/terminator
