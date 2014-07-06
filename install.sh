@@ -15,9 +15,11 @@ $SCRIPT_DIR/install-config-files.sh
 # Download YUICompressor
 $SCRIPT_DIR/install-yuicompressor.sh
 
-# Messages
-echo "--------------------------------------------------------------"
-echo "The following packages must be manually installed"
-echo "Google Chrome: https://www.google.com/intl/en/chrome/browser/"
-echo "Skype: http://www.skype.com/en/download-skype/skype-for-linux/"
-echo "Dropbox: https://www.dropbox.com/install?os=lnx"
+# Install Google Chrome
+$SCRIPT_DIR/install-google-chrome.sh
+
+# Install DropBox
+$SCRIPT_DIR/install-dropbox.sh
+
+# Install skype
+$SCRIPT_DIR/install-skype.sh
