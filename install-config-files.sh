@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Relative paths
+SCRIPT_PATH=`readlink -f "$0"`
+SCRIPT_DIR=`dirname $SCRIPT_PATH`
+
 # Creating symlinks to dotfiles
 ln --force --symbolic --verbose $SCRIPT_DIR/bashrc $HOME/.bashrc
 ln --force --symbolic --verbose $SCRIPT_DIR/conkyrc $HOME/.conkyrc
