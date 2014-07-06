@@ -71,6 +71,9 @@ alias wordprocessor='lowriter'
 alias spreadsheet='localc'
 alias presentation='loimpress'
 
+# Skype doesn't like to die and I don't trust it
+alias skype-kill='pkill skype'
+
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
