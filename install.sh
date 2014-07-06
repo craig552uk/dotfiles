@@ -27,7 +27,7 @@ sudo apt-get install --yes gpg
 sudo apt-get install --yes nginx
 
 # Install backports packages
-sudo apt-get -target-release wheezy-backports install --yes i3
+sudo apt-get --target-release wheezy-backports install --yes i3
 
 echo "Creating Symlinks to configs ..."
 
