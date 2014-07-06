@@ -118,3 +118,8 @@ function uol_r(){
  X=`echo $1 | sha1sum | cut -c1-8`
  echo "Redirect permanent $1    $2?uol_r=$X"
 }
+
+# Volume control
+function volume(){
+  amixer set Master ${1:-50}% | grep "Front [Left|Right]"
+}
