@@ -61,7 +61,15 @@ alias help-i3='less ~/.help/i3.txt'
 alias awk='awk -F "^\"|\"*,\"*|\"$"'
 
 # Run nautilus without loading desktop
-#alias nautilus='nautilus --no-desktop'
+alias nautilus='nautilus --no-desktop'
+
+# Open BBC News without window decoration
+alias bbcnews='google-chrome --app=http://www.bbc.co.uk/news/video_and_audio/'
+
+# Office Suite
+alias wordprocessor='lowriter'
+alias spreadsheet='localc'
+alias presentation='loimpress'
 
 # Other Aliases
 alias df='df --human-readable'
