@@ -134,3 +134,10 @@ function uol_r(){
 function volume(){
   amixer set Master ${1:-50}% | grep "Front [Left|Right]"
 }
+
+# Mount 2nd HDD
+function media-mount(){
+  sudo cryptsetup luksOpen /dev/sdb1 cryptmedia
+  mkdir --parents $HOME/Media
+  sudo mount /dev/mapper/cryptmedia $HOME/Media
+}
