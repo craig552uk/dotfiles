@@ -94,10 +94,10 @@ alias subl='sublime-text'
 export PATH=$PATH:$HOME/bin
 
 # GPG Key
-export GPGKEY=AAED4905
+export GPGKEY='AAED4905'
 
 # Git Config
-export GIT_AUTHOR_EMAIL=craig@craig-russell.co.uk
+export GIT_AUTHOR_EMAIL='craig@craig-russell.co.uk'
 export GIT_AUTHOR_NAME='Craig Russell'
 export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
