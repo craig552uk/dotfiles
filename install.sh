@@ -18,6 +18,9 @@ $SCRIPT_DIR/install-yuicompressor.sh
 # Install Google Chrome
 $SCRIPT_DIR/install-google-chrome.sh
 
+# Install Firefox
+$SCRIPT_DIR/install-firefox.sh
+
 # Install DropBox
 $SCRIPT_DIR/install-dropbox.sh
 
