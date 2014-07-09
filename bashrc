@@ -74,6 +74,9 @@ alias presentation='loimpress'
 # Skype doesn't like to die and I don't trust it
 alias skype-kill='pkill skype'
 
+# Find all TODO comments in sub-folders
+alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" .'
+
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
