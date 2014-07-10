@@ -1,0 +1,59 @@
+== Doc String ==
+
+# -*- coding: utf-8 -*-
+
+
+== Date and Time ==
+
+%a  :: Weekday, abbreviated                         :: Sun
+%A  :: Weekday, full                                :: Sunday
+%w  :: Weekday, decimal                             :: 1
+%d  :: Day of the month, decimal                    :: 01
+%b  :: Month, abbreviated                           :: Jan
+%B  :: Month, full name.                            :: January
+%m  :: Month, decimal                               :: 01
+%y  :: Year, two digit decimal                      :: 14
+%Y  :: Year, fourdigit decimal                      :: 2014
+%H  :: Hour (24-hour clock)                         :: 01
+%I  :: Hour (12-hour clock)                         :: 13
+%p  :: AM or PM.                                    :: AM
+%M  :: Minute, decimal                              :: 21
+%S  :: Second, decimal                              :: 21
+%f  :: Microsecond, decimal                         :: 123456
+%z  :: UTC offset                                   :: +0400
+%Z  :: Time zone name                               :: UTC
+%j  :: Day of the year, three digit decimal         :: 001
+%W  :: Week number of the year, decimal, start Sun  :: 00
+%W  :: Week number of the year, decimal, start Mon  :: 00
+%c  :: Full date and time representation            :: Tue Aug 16 21:30:00 2014
+%x  :: Full date representation                     :: 16/08/2014
+%X  :: Full time representation                     :: 21:30:00
+%%  :: A literal '%' character                      :: %
+
+# Examples
+
+DT.now().isoformat                          # '2014-07-10T14:50:56.619287'
+DT.now().strftime('%Y-%m-%d %H:%M:%S')      # '2014-07-10 14-52-39'
+DT.now().strftime('%A, %B %d, %I:%M:%S %p') # 'Thursday, July 10, 02:55:21 PM'
+
+
+== JSON ==
+
+# Pretty Print
+json.dumps(my_data, ensure_ascii=False, indent=2)
+
+
+== Logging ==
+
+# Common logger config
+logging.basicConfig(format='%(asctime)s %(name)s %(message)s', filename='my_app.log', level=logging.INFO)
+log = logging.getLogger('my_app')
+
+# Logging levels
+log.debug("Message")
+log.info("Message")
+log.warning("Message")
+log.error("Message")
+log.critical("Message")
+log.log("Message")
+log.exception("Message")
