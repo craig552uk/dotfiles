@@ -25,8 +25,17 @@ $SCRIPT_DIR/install-google-chrome.sh
 # Install Firefox
 $SCRIPT_DIR/install-firefox.sh
 
+# Install Thunderbird email client
+$SCRIPT_DIR/install-thunderbird.sh
+
 # Install DropBox
 $SCRIPT_DIR/install-dropbox.sh
 
 # Install skype
 $SCRIPT_DIR/install-skype.sh
+
+# Install Google App Engine SDK
+$SCRIPT_DIR/install-google-ap-engine.sh
+
+# Install Ruby
+$SCRIPT_DIR/install-ruby.sh
