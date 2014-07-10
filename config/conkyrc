@@ -32,7 +32,7 @@ use_xft yes
 xftalpha 0
 xftfont Open Sans Light:size=10
 override_utf8_locale yes
-default_color CCC
+default_color 333
 
 
 TEXT
