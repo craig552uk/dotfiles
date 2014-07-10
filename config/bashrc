@@ -96,6 +96,9 @@ alias subl='sublime-text'
 # Add home bin to path
 export PATH=$PATH:$HOME/bin
 
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # Add Google App Engine libraries to python path
 export PYTHONPATH=$PYTHONPATH:~/.gae/lib/
 
