@@ -17,6 +17,7 @@ sudo apt-get install --yes gpg
 sudo apt-get install --yes nginx
 sudo apt-get install --yes flashplugin-nonfree
 sudo apt-get install --yes unzip
+sudo apt-get install --yes numlockx
 
 # Install packages explicitly from backports
 sudo apt-get --target-release wheezy-backports install --yes i3
