@@ -7,7 +7,10 @@ TMP="/tmp/google-app-engine.$$.zip"
 wget --output-document $TMP $URL
 
 # Extract to home
-unzip $TMP -d ~/.gae.$VER
+cd ~ && unzip $TMP
+
+# Rename
+mv ~/google_appengine ~/.gae.$VER
 
 # Create link to current version
 ln --symbolic --force ~/.gae.$VER ~/.gae
