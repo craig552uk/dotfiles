@@ -21,6 +21,8 @@ txtrst='\[\e[0m\]'    # Text Reset
 
 # Function called before prompt
 function pre_prompt_print(){
+  # PWD in titlebar
+  echo -ne "\033]0;`pwd`\007"
   # Git branch
   GIT_BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[git:\1]/'`
 }
