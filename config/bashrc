@@ -157,3 +157,8 @@ function media-mount(){
   mkdir --parents $HOME/Media
   sudo mount /dev/mapper/cryptmedia $HOME/Media
 }
+
+function media-umount(){
+  sudo umount /dev/mapper/cryptmedia $HOME/Media
+  sudo cryptsetup luksClose /dev/sdb1 cryptmedia
+}
