@@ -80,6 +80,10 @@ alias skype-kill='pkill skype'
 # Find all TODO comments in sub-folders
 alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" .'
 
+# Virtual Machines
+alias vm-win7='virtualbox --startvm "Win7"'
+alias vm-winXP='virtualbox --startvm "WinXP"'
+
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
