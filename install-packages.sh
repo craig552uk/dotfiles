@@ -22,3 +22,4 @@ sudo apt-get install --yes numlockx
 
 # Install packages explicitly from backports
 sudo apt-get --target-release wheezy-backports install --yes i3
+sudo apt-get --target-release wheezy-backports install --yes virtualbox
