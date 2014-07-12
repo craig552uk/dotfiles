@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install packages
+sudo apt-get install --yes linux-headers-amd64
 sudo apt-get install --yes curl
 sudo apt-get install --yes git
 sudo apt-get install --yes dmenu
