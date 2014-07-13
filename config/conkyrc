@@ -56,6 +56,10 @@ Disk
  M ${goto 40}${fs_used /media/Media} / ${fs_size /media/Media} ${goto 160}${fs_bar 6 /media/Media}
  s ${goto 40}${swap}/${swapmax}                                ${goto 160}${swapbar 6}
 $hr
+Battery
+${battery BAT} ${battery_bar BAT}
+${apcupsd_timeleft}
+$hr
 ${if_existing /proc/net/route wlan0}Up: ${upspeed wlan0}   ${alignr}Down: ${downspeed wlan0}
 ${upspeedgraph wlan0 35,135}               ${alignr}${downspeedgraph wlan0 35,135}
 Sent: ${totalup wlan0} ${alignr}Received: ${totaldown wlan0}${endif}
