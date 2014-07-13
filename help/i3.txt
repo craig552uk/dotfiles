@@ -1,6 +1,14 @@
-== Opening Terminals/Applications and Moving Around ==
+== Opening Applications ==
 
 Win+Enter   :: Open terminal
+Win+F1      :: Open terminal
+Win+F2      :: Open firefox
+Win+F3      :: Open nautilus
+Win+F4      :: Open thunderbird
+
+
+== Moving Around ==
+
 Win+d       :: Open menu (for opening applications)
 Win+Arr     :: Change focus to another window
 Win+a       :: Change focus to parent container
@@ -8,6 +16,7 @@ Win+Sft+Arr :: Move window
 Win+v       :: Split vertically (note blue border)
 Win+h       :: Split horizontally (note blue border)
 Win+Sft+q   :: Close window
+Win+Delete  :: Close window
 
 
 == Changing the Container Layout ==
