@@ -84,6 +84,9 @@ alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" .'
 alias vm-win7='virtualbox --startvm "Win7"'
 alias vm-winXP='virtualbox --startvm "WinXP"'
 
+# Open a file with the default application
+alias open='xdg-open'
+
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
