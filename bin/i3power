@@ -1,0 +1,25 @@
+#!/bin/sh
+# Power management
+
+# NB: Grant shutdown to all users with:
+# > sudo chmod u+s /sbin/shutdown
+
+case "$1" in
+    lock)
+        i3lock --color 000000
+        ;;
+    logout)
+        i3-msg exit
+        ;;
+    reboot)
+        /sbin/shutdown -r now
+        ;;
+    shutdown)
+        /sbin/shutdown -h now
+        ;;
+    *)
+        echo "Usage: $0 {lock|logout|reboot|shutdown}"
+        exit 2
+esac
+
+exit 0

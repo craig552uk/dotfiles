@@ -90,6 +90,7 @@ alias open='xdg-open'
 # Other Aliases
 alias df='df --human-readable'
 alias ll='ls --human-readable --group-directories-first -l'
+alias shutdown='/sbin/shutdown'
 alias pud='pushd'
 alias pod='popd'
 alias g='grep'

@@ -39,8 +39,11 @@ Win+Sft+Num :: Move window to workspace NUM
 === Session Management ==
 
 Win+Sft+r   :: Restart i3 session in place
-Win+Sft+e   :: End session (logout)
-Win+Sft+w   :: Lock Screen (type password to unlock)
+Win+Esc     :: Power Management Mode
+  +l        :: lock
+  +e        :: logout
+  +r        :: reboot
+  +h        :: shutdown
 
 
 == Configuration ==
