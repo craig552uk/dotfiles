@@ -156,14 +156,16 @@ function volume(){
   amixer set Master ${1:-50}% | grep "Front [Left|Right]"
 }
 
-# Mount 2nd HDD
+# Un/Mount 2nd HDD
+HDDUID='udisks-luks-uuid-0b1c1cdc-6e1e-4550-af2e-a3a43dccfea2-uid1000'
+
 function media-mount(){
-  sudo cryptsetup luksOpen /dev/sdb1 cryptmedia
+  sudo cryptsetup luksOpen /dev/sdb1 $HDDUID
   mkdir --parents $HOME/Media
-  sudo mount /dev/mapper/cryptmedia $HOME/Media
+  sudo mount /dev/mapper/$HDDUID /media/Media
 }
 
 function media-umount(){
-  sudo umount /dev/mapper/cryptmedia $HOME/Media
-  sudo cryptsetup luksClose /dev/sdb1 cryptmedia
+  sudo umount /media/Media
+  sudo cryptsetup luksClose $HDDUID
 }
