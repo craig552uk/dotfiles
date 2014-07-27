@@ -75,5 +75,3 @@ $hr
 BBC Weather - Leicester, UK
 ${execi 500 curl  http://open.live.bbc.co.uk/weather/feeds/en/2644668/3dayforecast.rss | grep "<title>" | grep "day" | sed -e 's/.*<title>//g' -e 's/<\/title>.*//g' -e 's/Maximum Temperature/\n    Max/g' -e 's/Minimum Temperature/Min/g' -e 's/y:/y:\n   /g'}
 $hr
-Dropbox: ${execi 500 dropbox status}
-$hr
