@@ -1,0 +1,87 @@
+#!/usr/bin/python
+#
+# Prints bars visualising numeric values piped in
+# Auhtor: Craig Russell <craig@craig-russell.co.uk>
+
+import sys
+from optparse import OptionParser, OptionGroup
+
+__author__  = "Craig Russell <craig@craig-russell.co.uk>"
+__version__ = "0.1"
+
+DESCRIPTION = """Receives data from stdin and sraws a bar chart"""
+
+EPILOG = "Author: %s" % __author__
+
+# Command line options
+parser = OptionParser(usage="Usage: bars [options]", description=DESCRIPTION, epilog=EPILOG, version=__version__)
+parser.add_option("-f",  "--field_seperator", dest="field_seperator",                      default=" ",   help="The field seperator in the input")
+parser.add_option("-i",  "--field_index",     dest="field_index",     type="int",          default=0,     help="The column number (zero-indexed) of numbers to process")
+parser.add_option("-s",  "--max_bar_size",    dest="max_bar_size",    type="int",          default=60,    help="The maximum size of the bars in characters")
+parser.add_option("-c",  "--bar_character",   dest="bar_character",                        default="#",   help="The character used to draw the bars")
+parser.add_option("-z",  "--zero_minimum",    dest="zero_minimum",    action="store_false", default=True, help="Bars scaled with a minimum value of zero. Minimum value in data used otherwise.")
+parser.add_option("-p",  "--pad_lines",       dest="pad_lines",       action="store_false", default=True, help="Space-pad output if set")
+
+
+def do_bars(stdin, options):
+    FS = options.field_seperator
+    FI = options.field_index
+    MC = options.max_bar_size
+    ZM = options.zero_minimum
+    PL = options.pad_lines
+
+    # Because optparse borks at unicode
+    if options.bar_character == "#":
+        BC = u"\u25A0"
+    else:
+        BC = options.bar_character
+
+
+    # Read data from stdin and convert to list of tuples
+    lines   = [tuple(line.strip().split(FS)) for line in stdin.readlines()]
+
+    # Exit if no stdin
+    if not lines:
+        sys.exit()
+
+    # Record longest line length for output formatting
+    max_len = max([len(FS.join(line)) for line in lines])
+
+    # Get list of values to use
+    try:
+        values = [line[FI] for line in lines]
+    except IndexError:
+        sys.stderr.write("Bad index (%s) \n" % field_index)
+        sys.exit(2)
+
+
+    # Ensure all values are numeric
+    try:
+        values = [float(e) for e in values]
+    except ValueError:
+        sys.stderr.write("Contains non-numeric values: %s \n" % values)
+        sys.exit(2)
+
+
+    # Calculate bar steps and other value metrics
+    if ZM: min_val = 0
+    else:  min_val = int(min(values))
+    max_val = int(max(values))
+    sum_val = sum(values)
+    steps   = range(min_val, max_val, (max_val - min_val) / (MC - 1))
+
+
+    # Print bars
+    for line in lines:
+        bar  = "".join([BC for step in steps if float(line[FI]) > step])
+        perc = (float(line[FI]) / float(sum_val)) * 100
+        if PL:
+            line = FS.join(line).ljust(max_len)
+        else:
+            line = FS.join(line)
+        sys.stdout.write("%s %s %.2f%%\n" % (line, bar, perc))
+
+
+if __name__ == "__main__":
+    (options, args) = parser.parse_args()
+    do_bars(sys.stdin, options)
