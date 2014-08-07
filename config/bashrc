@@ -59,6 +59,7 @@ alias decrypt='gpg --decrypt'
 alias help-vim='less ~/.help/vim.txt'
 alias help-i3='less ~/.help/i3.txt'
 alias help-python='less ~/.help/python.txt'
+alias help-ga-api='less ~/.help/ga_api.txt'
 
 # Awk filters CSV files by default
 alias awk='awk -F "^\"|\"*,\"*|\"$"'
