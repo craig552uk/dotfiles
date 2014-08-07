@@ -1,3 +1,3 @@
 #!/bin/bash
 # Wrapper script for ga_reports.py
-/usr/bin/python ~/dev/python/ga_report/ga_report.py $*
+/usr/bin/python ~/.sync/src/ga_report.src/ga_report.py $*
