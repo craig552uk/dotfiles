@@ -170,3 +170,8 @@ function media-umount(){
   sudo umount /media/Media
   sudo cryptsetup luksClose $HDDUID
 }
+
+# Generate random password
+function password_gen(){
+  echo $(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 12)
+}
