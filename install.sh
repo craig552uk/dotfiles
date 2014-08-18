@@ -28,9 +28,6 @@ $SCRIPT_DIR/install-firefox.sh
 # Install Thunderbird email client
 $SCRIPT_DIR/install-thunderbird.sh
 
-# Install DropBox
-#$SCRIPT_DIR/install-dropbox.sh
-
 # Install skype
 $SCRIPT_DIR/install-skype.sh
 
