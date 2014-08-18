@@ -98,6 +98,7 @@ alias g='grep'
 alias st2='sublime-text'
 alias subl='sublime-text'
 alias spideroak='SpiderOak'
+alias vol='volume'
 
 
 # System Variables #
