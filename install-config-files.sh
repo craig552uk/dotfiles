@@ -7,6 +7,7 @@ SCRIPT_DIR=`dirname $SCRIPT_PATH`
 # Creating symlinks to dotfiles
 ln --force --symbolic --verbose $SCRIPT_DIR/config/bashrc $HOME/.bashrc
 ln --force --symbolic --verbose $SCRIPT_DIR/config/conkyrc $HOME/.conkyrc
+ln --force --symbolic --verbose $SCRIPT_DIR/config/conkyrc-i3bar $HOME/.conkyrc-i3bar
 ln --force --symbolic --verbose $SCRIPT_DIR/config/vimrc $HOME/.vimrc
 ln --force --symbolic --verbose $SCRIPT_DIR/config/irbrc $HOME/.irbrc
 ln --force --symbolic --verbose $SCRIPT_DIR/config/bashrc $HOME/.bashrc
