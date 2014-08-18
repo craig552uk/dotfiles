@@ -15,8 +15,6 @@ ln --force --symbolic --verbose $SCRIPT_DIR/config/i3status.conf $HOME/.i3status
 ln --force --symbolic --verbose $SCRIPT_DIR/config/gtkrc-2.0 $HOME/.gtkrc-2.0
 
 # Creating symlinks to application configs
-mkdir --parents $HOME/.config/terminator
-ln --force --symbolic --verbose $SCRIPT_DIR/config/terminator_config $HOME/.config/terminator/config
 mkdir --parents $HOME/.i3
 ln --force --symbolic --verbose $SCRIPT_DIR/config/i3wm.conf $HOME/.i3/config
 

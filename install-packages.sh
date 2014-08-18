@@ -7,7 +7,6 @@ sudo apt-get install --yes git
 sudo apt-get install --yes dmenu
 sudo apt-get install --yes vim
 sudo apt-get install --yes sublime-text
-sudo apt-get install --yes terminator
 sudo apt-get install --yes conky
 sudo apt-get install --yes python-dev python-pip python-virtualenv
 sudo apt-get install --yes inkscape
