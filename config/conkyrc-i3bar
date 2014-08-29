@@ -23,7 +23,7 @@ if_up_strictness address
 
 # Add spaces to keep things from moving about?  This only affects certain objects.
 # use_spacer should have an argument of left, right, or none
-use_spacer left
+use_spacer none
 
 # Force UTF8? note that UTF8 support required XFT
 override_utf8_locale no
@@ -45,7 +45,7 @@ TEXT
 {"full_text": "tor",       "color": ${if_running tor}       "\#12c700" ${else} "\#dd2c00" ${endif} },
 
 # Disk Use
-#{"full_text": "hdd ${fs_used /}/${fs_size /} (${fs_used_perc /}%)" ${if_match ${fs_used_perc /}>80} ,"color": "\#dd2c00" ${endif} },
+{"full_text": "hdd ${fs_used /}/${fs_size /} (${fs_used_perc /}%)" ${if_match ${fs_used_perc /}>80} ,"color": "\#dd2c00" ${endif} },
 
 # System Monitoring
 {"full_text": "load ${loadavg 1}", "color": ${if_match ${loadavg 1}<1} "\#12c700" ${else} "\#dd2c00" ${endif} },
@@ -55,7 +55,7 @@ TEXT
 
 # Network
 ${if_existing /proc/net/route wlan0}
-    {"full_text": "wlan0 ${addr wlan0}" (${wireless_link_qual_perc wlan0} at ${wireless_essid wlan0}), "color": "\#12c700"}, 
+    {"full_text": "wlan0 ${addr wlan0} (${wireless_link_qual_perc wlan0}% at ${wireless_essid wlan0})", "color": "\#12c700"}, 
 ${else}
     {"full_text": "wlan0", "color": "\#dd2c00"}, 
 ${endif}
@@ -71,7 +71,7 @@ ${endif}
  "color": ${if_match ${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f5}>0} "\#12c700" ${else} "\#dd2c00" ${endif} },
 
 # Power
-# {"full_text": "${battery_short BAT}"},
+{"full_text": "${battery_short BAT}"},
 
 # Time
 {"full_text": "${time}", "color": "\#d9d9d9"},

@@ -34,7 +34,6 @@ xftfont Open Sans Light:size=10
 override_utf8_locale yes
 default_color 333
 
-
 TEXT
 $hr
 Load: ${loadavg 1}, ${loadavg 2}, ${loadavg 3} ${alignr}Uptime: ${uptime}
@@ -58,7 +57,7 @@ Disk
 $hr
 Battery
 ${battery BAT} ${battery_bar BAT}
-${apcupsd_timeleft}
+Time: ${battery_time BAT}
 $hr
 ${if_existing /proc/net/route wlan0}Up: ${upspeed wlan0}   ${alignr}Down: ${downspeed wlan0}
 ${upspeedgraph wlan0 35,135}               ${alignr}${downspeedgraph wlan0 35,135}
