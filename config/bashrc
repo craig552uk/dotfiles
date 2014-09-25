@@ -62,7 +62,7 @@ alias help-python='less ~/.help/python.txt'
 alias help-ga-api='less ~/.help/ga_api.txt'
 
 # Awk filters CSV files by default
-alias awk='awk -F "^\"|\"*,\"*|\"$"'
+alias awk='awk -F "^\"|\",\"|\"$"'
 
 # Run nautilus without loading desktop
 alias nautilus='nautilus --no-desktop'
