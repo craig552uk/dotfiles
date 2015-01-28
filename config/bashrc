@@ -99,7 +99,7 @@ alias st2='sublime-text'
 alias subl='sublime-text'
 alias spideroak='SpiderOak'
 alias vol='volume'
-
+alias retro-term='/opt/cool-retro-term/cool-retro-term'
 
 # System Variables #
 # ================ #
