@@ -31,10 +31,6 @@ PROMPT_COMMAND=pre_prompt_print
 PS1="$bldgrn\u$txtrst@$bldpur\h$txtrst:$bldblu\w$txtrst $bldpur\${GIT_BRANCH}$txtrst\n$bldylw\!$txtrst> "
 #PS1="\u@\h:\w \${GIT_BRANCH}\n\!> "
 
-
-# Aliases #
-# ======= #
-
 # Git aliases
 alias gita='git add'
 alias gitc='git commit -m'
@@ -56,24 +52,10 @@ alias encrypt='gpg --encrypt --armour --sign --emit-version'
 alias decrypt='gpg --decrypt'
 
 # Shortcuts to my help documents
-alias help-vim='less ~/.help/vim.txt'
-alias help-i3='less ~/.help/i3.txt'
-alias help-python='less ~/.help/python.txt'
-alias help-ga-api='less ~/.help/ga_api.txt'
-
-# Awk filters CSV files by default
-alias awk='awk -F "^\"|\",\"|\"$"'
-
-# Run nautilus without loading desktop
-alias nautilus='nautilus --no-desktop'
-
-# Open BBC News without window decoration
-alias bbcnews='google-chrome --app=http://www.bbc.co.uk/news/video_and_audio/'
-
-# Office Suite
-alias wordprocessor='lowriter'
-alias spreadsheet='localc'
-alias presentation='loimpress'
+alias help-vim='less ~/.dotfiles/help/vim.txt'
+alias help-i3='less ~/.dotfiles/help/i3.txt'
+alias help-python='less ~/.dotfiles/help/python.txt'
+alias help-ga-api='less ~/.dotfiles/help/ga_api.txt'
 
 # Skype doesn't like to die and I don't trust it
 alias skype-kill='pkill skype'
@@ -89,29 +71,19 @@ alias vm-winXP='virtualbox --startvm "WinXP"'
 alias open='xdg-open'
 
 # Other Aliases
-alias df='df --human-readable'
-alias ll='ls --human-readable --group-directories-first -l'
+alias ll='ls --human-readable --group-directories-first -l --color'
+alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
-alias pud='pushd'
-alias pod='popd'
 alias g='grep'
 alias st2='sublime-text'
 alias subl='sublime-text'
-alias spideroak='SpiderOak'
 alias vol='volume'
-alias retro-term='/opt/cool-retro-term/cool-retro-term'
 
 # System Variables #
 # ================ #
 
 # Add home bin to path
 export PATH=$PATH:$HOME/bin
-
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Add Google App Engine libraries to python path
-export PYTHONPATH=$PYTHONPATH:~/.gae/lib/
 
 # GPG Key
 export GPGKEY='AAED4905'
@@ -156,20 +128,6 @@ function uol_r(){
 # Volume control
 function volume(){
   amixer set Master ${1:-50}% | grep "Front [Left|Right]"
-}
-
-# Un/Mount 2nd HDD
-HDDUID='udisks-luks-uuid-0b1c1cdc-6e1e-4550-af2e-a3a43dccfea2-uid1000'
-
-function media-mount(){
-  sudo cryptsetup luksOpen /dev/sdb1 $HDDUID
-  mkdir --parents $HOME/Media
-  sudo mount /dev/mapper/$HDDUID /media/Media
-}
-
-function media-umount(){
-  sudo umount /media/Media
-  sudo cryptsetup luksClose $HDDUID
 }
 
 # Generate random password
