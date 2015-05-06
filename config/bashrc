@@ -75,8 +75,8 @@ alias ll='ls --human-readable --group-directories-first -l --color'
 alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
 alias g='grep'
-alias st2='sublime-text'
-alias subl='sublime-text'
+alias subl='LANG=en_US.UTF-8 xiwi subl'
+alias st2='subl'
 alias vol='volume'
 
 # System Variables #
