@@ -56,3 +56,18 @@ log.error("Message")
 log.critical("Message")
 log.log("Message")
 log.exception("Message")
+
+
+== Virtual Environment ==
+
+# Install
+pip install virtualenv
+
+# Create New
+virtualenv env
+
+# Activate
+source env/bin/activate
+
+# Deactivate
+deactivate
