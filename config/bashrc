@@ -61,7 +61,7 @@ alias help-ga-api='less ~/.dotfiles/help/ga_api.txt'
 alias skype-kill='pkill skype'
 
 # Find all TODO comments in sub-folders
-alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" .'
+alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" . | sed "s/:\s*#/: #/"'
 
 # Virtual Machines
 alias vm-win7='virtualbox --startvm "Win7"'
