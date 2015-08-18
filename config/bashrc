@@ -1,4 +1,3 @@
-
 # Interactive Prompt Config #
 # ========================= #
 
@@ -28,6 +27,7 @@ function pre_prompt_print(){
 }
 
 PROMPT_COMMAND=pre_prompt_print
+#PS1="$txtgrn\u$txtrst@$txtpur\h$txtrst:$txtwht\w$txtrst $txtpur\${GIT_BRANCH}$txtrst\n$txtylw\!$txtrst> "
 PS1="$bldgrn\u$txtrst@$bldpur\h$txtrst:$bldblu\w$txtrst $bldpur\${GIT_BRANCH}$txtrst\n$bldylw\!$txtrst> "
 #PS1="\u@\h:\w \${GIT_BRANCH}\n\!> "
 
@@ -75,9 +75,10 @@ alias ll='ls --human-readable --group-directories-first -l --color'
 alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
 alias g='grep'
-alias subl='LANG=en_US.UTF-8 xiwi subl'
+alias subl='LANG=en_US.UTF-8 subl'
 alias st2='subl'
 alias vol='volume'
+alias calc='bc -iq'
 
 # System Variables #
 # ================ #
@@ -98,17 +99,6 @@ export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
 # Helper Functions #
 # ================ #
 
-# Command line interactive calculator
-# I like this better than bc -iq
-function calc(){
-  while true
-  do
-    echo -n "> "
-    read LINE
-    echo "$LINE" | bc
-  done
-}
-
 # Filter links from HTML
 function filter_links(){
   grep "href=" | sed "s/.*href=[\"\']\([^'\"]*\)[\"'].*/\1/"
@@ -116,7 +106,7 @@ function filter_links(){
 
 # Return HTTP URL status code
 function curl_code(){
-  curl -s -w "%{http_code} %{url_effective}\\n" "$1" -o /dev/null
+  curl --retry 2 -s -w "%{http_code} %{url_effective}\\n" "$1" -o /dev/null
 }
 
 # Return Apache config with uol_r tracking code
