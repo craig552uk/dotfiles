@@ -1,0 +1,3 @@
+#!/bin/bash
+RESULTS=${1:-"10"}
+for n in $(seq 1 $RESULTS); do curl -i https://en.wikipedia.org/wiki/Special:Random 2> /dev/null| grep Location | sed -e 's/.*wiki\///' -e 's/_/ /g'; done
