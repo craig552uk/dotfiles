@@ -1,0 +1,5 @@
+!True-Type font
+!Requires package xfonts-base
+XTerm*renderFont: true
+XTerm*faceName: Droid
+XTerm*faceSize: 10
