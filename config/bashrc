@@ -51,6 +51,10 @@ alias http='python -m SimpleHTTPServer'
 alias encrypt='gpg --encrypt --armour --sign --emit-version'
 alias decrypt='gpg --decrypt'
 
+# URL parsing
+alias urlencode='python -c "import sys, urllib; map(lambda x: sys.stdout.write(urllib.quote(x)), sys.stdin)"'
+alias urldecode='python -c "import sys, urllib; map(lambda x: sys.stdout.write(urllib.unquote(x)), sys.stdin)"'
+
 # Shortcuts to my help documents
 alias help-vim='less ~/.dotfiles/help/vim.txt'
 alias help-i3='less ~/.dotfiles/help/i3.txt'

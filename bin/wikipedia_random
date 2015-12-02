@@ -2,5 +2,5 @@
 RESULTS=${1:-"10"}
 URL='https://en.wikipedia.org/wiki/Special:Random'
 for n in $(seq 1 $RESULTS); do
-  curl -i $URL 2> /dev/null| grep Location | sed -e 's/.*wiki\///' -e 's/_/ /g'
+  curl -i $URL 2> /dev/null| grep Location | sed -e 's/.*wiki\///' -e 's/_/ /g' | python -c "import sys, urllib; map(lambda x: sys.stdout.write(urllib.unquote(x)), sys.stdin)"
 done
