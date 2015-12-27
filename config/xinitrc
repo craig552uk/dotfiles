@@ -1,0 +1,8 @@
+# Force load Xresources config
+xrdb ~/.Xresources
+
+# Set desktop color
+xsetroot -solid "#4CAF50"
+
+# Start i3
+exec i3
