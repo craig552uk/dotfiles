@@ -1,6 +1,9 @@
 # Force load Xresources config
 xrdb ~/.Xresources
 
+# Set keyboard region
+setxkbmap -layout gb
+
 # Set desktop color
 xsetroot -solid "#4CAF50"
 
