@@ -75,9 +75,12 @@ alias vm-winXP='virtualbox --startvm "WinXP"'
 alias open='xdg-open'
 
 # Database connections
-alias db_portaone_stg='mysql -A --user=staging_portal --password=Xbf3VeJv5h --host=10.20.11.19 --port=3307 porta-billing'
-alias db_portaone_uk='mysql -A --user=synety-crussell --password=KyTg67Uk --host=91.228.242.123 --port=3308 porta-billing'
-alias db_portaone_us='mysql -A --user=synety-crussell --password=ErtgH56U --host=172.20.40.76 --port=3307 porta-billing'
+alias db_portaone_stg='mysql  -A --user=staging_portal  --password=Xbf3VeJv5h --host=10.20.11.19    --port=3307  porta-billing'
+alias db_portaone_uk='mysql   -A --user=synety-crussell --password=KyTg67Uk   --host=91.228.242.123 --port=3308  porta-billing'
+alias db_portaone_us='mysql   -A --user=synety-crussell --password=ErtgH56U   --host=172.20.40.76   --port=3307  porta-billing'
+alias db_cloudcall_lab='mysql -A --user=crussell-ro     --password=TFgb67Hu   --host=172.31.38.16   --port=3306  CloudCall_API'
+alias db_cloudcall_uk='mysql  -A --user=crussell-ro     --password=TFgb67Hu   --host=91.228.242.123 --port=3306  CloudCall_API'
+alias db_cloudcall_us='mysql  -A --user=crussell-ro     --password=PJ7t6Ujt   --host=172.20.1.154   --port=33061 CloudCall_API'
 
 # Other Aliases
 alias ll='ls --human-readable --group-directories-first -l --color'
