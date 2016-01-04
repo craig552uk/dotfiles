@@ -3,3 +3,5 @@
 XTerm*renderFont: true
 XTerm*faceName: Droid
 XTerm*faceSize: 10
+XTerm*background: black
+XTerm*foreground: white
