@@ -47,7 +47,7 @@ def show_help():
     """Show the help"""
     print "Usage:"
     print "  postcodes help"
-    print "  postcodes random"
+    print "  postcodes random [<outcode>]"
     print "  postcodes info <postcode>"
     print "  postcodes search <postcode> [<quantity:100>]"
     print "  postcodes nearby <postcode> [<quantity:100> [<radius:2000m>]]"
@@ -67,6 +67,9 @@ if __name__ == "__main__":
         elif(action == "nearby"): pp(postcode_nearest(*sys.argv))
         elif(action == "coords"): pp(geocode_lookup(*sys.argv))
         else:                     show_help()
+
+    except TypeError:
+        show_help()
 
     except IndexError:
         show_help()
