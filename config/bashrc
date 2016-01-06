@@ -42,7 +42,6 @@ alias gitu='git reset HEAD^'
 
 # Pretty print JSON
 alias jsonpp='python -mjson.tool'
-alias ppjson='python -mjson.tool'
 
 # Run local HTTP server in current directory
 alias http='python -m SimpleHTTPServer'
@@ -61,26 +60,19 @@ alias help-i3='less ~/.dotfiles/help/i3.txt'
 alias help-python='less ~/.dotfiles/help/python.txt'
 alias help-ga-api='less ~/.dotfiles/help/ga_api.txt'
 
-# Skype doesn't like to die and I don't trust it
-alias skype-kill='pkill skype'
-
 # Find all TODO comments in sub-folders
 alias todo='grep -rn --exclude-dir="lib" --exclude-dir=".git" "TODO" . | sed "s/:\s*#/: #/"'
-
-# Virtual Machines
-alias vm-win7='virtualbox --startvm "Win7"'
-alias vm-winXP='virtualbox --startvm "WinXP"'
 
 # Open a file with the default application
 alias open='xdg-open'
 
-# Database connections
-alias db_portaone_stg='mysql  -A --user=staging_portal  --password=Xbf3VeJv5h --host=10.20.11.19    --port=3307  porta-billing'
-alias db_portaone_uk='mysql   -A --user=synety-crussell --password=KyTg67Uk   --host=91.228.242.123 --port=3308  porta-billing'
-alias db_portaone_us='mysql   -A --user=synety-crussell --password=ErtgH56U   --host=172.20.40.76   --port=3307  porta-billing'
-alias db_cloudcall_lab='mysql -A --user=crussell-ro     --password=TFgb67Hu   --host=172.31.38.16   --port=3306  CloudCall_API'
-alias db_cloudcall_uk='mysql  -A --user=crussell-ro     --password=TFgb67Hu   --host=91.228.242.123 --port=3306  CloudCall_API'
-alias db_cloudcall_us='mysql  -A --user=crussell-ro     --password=PJ7t6Ujt   --host=172.20.1.154   --port=33061 CloudCall_API'
+# Convert upper and lower case
+alias caseup='tr [:lower:] [:upper:]'
+alias casedown='tr [:upper:] [:lower:]'
+
+# Convert line endings between unix and windows
+alias unix_to_dos="sed 's/$/\r/g'"
+alias dos_to_unix="sed 's/\r$//g'"
 
 # Other Aliases
 alias ll='ls --human-readable --group-directories-first -l --color'
@@ -88,11 +80,7 @@ alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
 alias g='grep'
 alias subl='LANG=en_US.UTF-8 subl'
-alias st2='subl'
-alias vol='volume'
-alias calc='bc -iq'
 
-alias clipboard="sed 's/$/\r/g' > ~/share/clipboard.txt"
 
 # System Variables #
 # ================ #
@@ -126,12 +114,6 @@ function curl_code(){
   curl --retry 2 -s -w "%{http_code} %{url_effective}\\n" "$1" -o /dev/null
 }
 
-# Return Apache config with uol_r tracking code
-function uol_r(){
- X=`echo $1 | sha1sum | cut -c1-8`
- echo "Redirect permanent $1    $2?uol_r=$X"
-}
-
 # Volume control
 function volume(){
   amixer set Master ${1:-50}% | grep "Front [Left|Right]"
@@ -141,3 +123,10 @@ function volume(){
 function password_gen(){
   echo $(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 12)
 }
+
+# Run local bashrc script if it exists
+# This is for system specific config
+if [ -e ~/.bashrc.local ]
+then
+    . ~/.bashrc.local
+fi
