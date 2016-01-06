@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+import sys
+import urllib2
+import json
+import yaml
+
+def http_get(path):
+    """Make an HTTP GET to the postcodes API"""
+    url = "http://api.postcodes.io/%s" % path
+    try:
+        res = json.loads(urllib2.urlopen(url).read())
+        return res['result']
+    except urllib2.HTTPError as e:
+        raise Exception("%s (%s)" % (e, url))
+
+def pp(data):
+    """Dispaly mixed data"""
+    print yaml.safe_dump(data, allow_unicode=True, default_flow_style=False, indent=4)
+
+def postcode_random(outcode=None):
+    """Get info about a postcode"""
+    if outcode:
+        res = http_get("/random/postcodes?outcode=%s" % outcode)
+        if res is None: raise Exception("Invalid outcode '%s'" % outcode)
+        return res
+    else:
+        return http_get("/random/postcodes/")
+
+def postcode_lookup(postcode):
+    """Get info about a postcode"""
+    return http_get("/postcodes/%s" % postcode)
+
+def postcode_query(query, limit=100):
+    """Search for postcodes"""
+    return http_get("/postcodes?query=%s&limit=%s" % (query, limit))
+
+def postcode_nearest(postcode, limit=100, radius="2000m"):
+    """Search for nearby postcodes"""
+    return http_get("/postcodes/%s/nearest?limit=%s&radius=%s" % (postcode, limit, radius))
+
+def geocode_lookup(latitude, longitude, limit=100, radius="2000m"):
+    """Get postcode info by coordinates"""
+    return http_get("/postcodes?lon=%s&lat=%s&limit=%s&radius=%s" % (longitude, latitude, limit, radius))
+
+def show_help():
+    """Show the help"""
+    print "Usage:"
+    print "  postcodes help"
+    print "  postcodes random"
+    print "  postcodes info <postcode>"
+    print "  postcodes search <postcode> [<quantity:100>]"
+    print "  postcodes nearby <postcode> [<quantity:100> [<radius:2000m>]]"
+    print "  postcodes coords <lattitude> <longitude> [<quantity:100> [<radius:2000m>]]"
+
+if __name__ == "__main__":
+    try:
+        # Pop script path and first argument (action)
+        path   = sys.argv.pop(0)
+        action = sys.argv.pop(0)
+
+        # Run action or help
+        if  (action == "help"):   show_help()
+        elif(action == "random"): pp(postcode_random(*sys.argv))
+        elif(action == "info"):   pp(postcode_lookup(*sys.argv))
+        elif(action == "search"): pp(postcode_query(*sys.argv))
+        elif(action == "nearby"): pp(postcode_nearest(*sys.argv))
+        elif(action == "coords"): pp(geocode_lookup(*sys.argv))
+        else:                     show_help()
+
+    except IndexError:
+        show_help()
+
+    except Exception as e:
+        print e

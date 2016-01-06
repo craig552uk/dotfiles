@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+#
+# GetAddress.io API
+# API for querying UK addresses
+# See: https://getaddress.io
+# 
+# Usage:
+# https://api.getAddress.io/v2/uk/{postcode}
+# https://api.getAddress.io/v2/uk/{postcode}/{house}
+#
+# Concise formatting:
+# https://api.getAddress.io/v2/uk/{postcode}?format=true
+#
+# Current balance and limits:
+# https://api.getAddress.io/usage
+#
+# Batch
+# https://api.getAddress.io/v2/batch/uk/{postcode},{postcode},{postcode}
+#
+# Authentication
+# Authentication to the API occurs via HTTP Basic Auth. Use api-key as the user name and your API key is the password. Here is how you use basic HTTP auth with curl:
+# curl --user 'api-key:{api-key}' --url 'https://api.getAddress.io/v2/uk/sw1a2aa' 
+#
+# Alternative Authentication
+# Alternatively, you can just add the 'api-key' as a query string parameter 
+# For example: 'https://api.getAddress.io/v2/uk/sw1a2aa?api-key=L2L8QgsFOk2A5CpnFpY15w2632'
+#
+# The API uses HTTPs only. Plain HTTP connections are refused.
+#
+# Please use a separate API key for each of your applications/web-sites.
+#
+# Stay in touch
+# If you have an issue, a question, a suggestion, a request, or if you just want to tell us something, please email us at support@getAddress.io
+
+
+import sys
+import urllib2
+import json
+
+api_base = "https://api.getAddress.io/v2/uk/"
+api_key  = "-_0qWwLDfUKr7SXgl5w8OQ2735"
+
+try:
+    if len(sys.argv) > 2:
+        url = "%s/%s/%s?api-key=%s" % (api_base, sys.argv[1], sys.argv[2], api_key)
+    else:
+        url = "%s/%s?api-key=%s" % (api_base, sys.argv[1], api_key)
+
+    res = json.loads(urllib2.urlopen(url).read())
+    print " * Latitude:  %s" % res['Latitude']
+    print " * Longitude: %s" % res['Longitude']
+    for address in res['Addresses']: print address
+
+except IndexError:
+    print " * Usage: postcode_search <postcode> <house number>"
+
+except urllib2.HTTPError as e:
+    print " * Unknown Postcode"
