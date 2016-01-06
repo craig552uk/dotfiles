@@ -43,6 +43,9 @@ alias gitu='git reset HEAD^'
 # Pretty print JSON
 alias jsonpp='python -mjson.tool'
 
+# Pretty print XML
+alias xmlpp='python -c "import sys;from xml.dom.minidom import parseString; sys.stdout.write(parseString(sys.stdin.read()).toprettyxml(indent=\"  \",encoding=\"utf-8\"))"'
+
 # Run local HTTP server in current directory
 alias http='python -m SimpleHTTPServer'
 
@@ -51,8 +54,8 @@ alias encrypt='gpg --encrypt --armour --sign --emit-version'
 alias decrypt='gpg --decrypt'
 
 # URL parsing
-alias urlencode='python -c "import sys, urllib; map(lambda x: sys.stdout.write(urllib.quote(x)), sys.stdin)"'
-alias urldecode='python -c "import sys, urllib; map(lambda x: sys.stdout.write(urllib.unquote(x)), sys.stdin)"'
+alias urlencode='python -c "import sys, urllib; sys.stdout.write(urllib.quote(sys.stdin.read()))"'
+alias urldecode='python -c "import sys, urllib; sys.stdout.write(urllib.unquote(sys.stdin.read()))"'
 
 # Shortcuts to my help documents
 alias help-vim='less ~/.dotfiles/help/vim.txt'
