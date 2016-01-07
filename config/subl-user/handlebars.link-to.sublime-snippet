@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[
+{{#link-to "${1:foo}"}}${2:Foo}{{/link-to}}
+]]></content>
+    <tabTrigger>link-to</tabTrigger>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+{{#each ${1:foo} as |${2:bar}|}}
+    {{${2:bar}}}
+{{/each}}
+]]></content>
+    <tabTrigger>each</tabTrigger>
+</snippet>
