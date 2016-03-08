@@ -1,35 +1,43 @@
 #!/usr/bin/python
 
-stack = [];
+def main():
+    stack = [];
+    
+    while(True):
 
-while(True):
+        # Display stack and prompt for input
+        str_stack = " ".join([str(e).rstrip('0').rstrip('.') for e in stack])
+        prompt    = "> %s " % str_stack if len(stack) else "> "
+        token     = raw_input(prompt)
 
-    # Display stack and prompt for input
-    str_stack = " ".join([str(e) for e in stack])
-    prompt    = "> %s " % str_stack if len(stack) else "> "
-    token     = raw_input(prompt)
+        try:
+            # Process number input
+            stack.append(float(token))
 
+        except ValueError:
+            
+            if token in "/*-+%":
+                # Process operator input
+                try:
+                    b = stack.pop()
+                    a = stack.pop()
+
+                    if token == '/': stack.append(a/b)
+                    if token == '*': stack.append(a*b)
+                    if token == '-': stack.append(a-b)
+                    if token == '+': stack.append(a+b)
+                    if token == '%': stack.append(a%b)
+
+                except IndexError:
+                    print "Insufficient Numbers on Stack"
+
+            else:
+                # Other input. Reset stack
+                stack = [];
+
+
+if __name__ == "__main__":
     try:
-        # Process number input
-        stack.append(int(token))
-
-    except ValueError:
-        
-        if token in "/*-+%":
-            # Process operator input
-            try:
-                b = stack.pop()
-                a = stack.pop()
-
-                if token == '/': stack.append(a/b)
-                if token == '*': stack.append(a*b)
-                if token == '-': stack.append(a-b)
-                if token == '+': stack.append(a+b)
-                if token == '%': stack.append(a%b)
-
-            except IndexError:
-                print "Insufficient Numbers on Stack"
-
-        else:
-            # Other input. Reset stack
-            stack = [];
+        main()
+    except KeyboardInterrupt:
+        pass
