@@ -83,7 +83,7 @@ alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
 alias g='grep'
 alias subl='LANG=en_US.UTF-8 subl'
-
+alias weather='curl wttr.in/leicester'
 
 # System Variables #
 # ================ #
