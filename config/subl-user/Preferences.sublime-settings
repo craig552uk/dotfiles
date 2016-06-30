@@ -1,48 +1,17 @@
 {
-	"dictionary": "Packages/Language - English/en_GB.dic",
-	"file_exclude_patterns":
-	[
-		"*.pyc",
-		"*.pyo",
-		"*.exe",
-		"*.dll",
-		"*.obj",
-		"*.o",
-		"*.a",
-		"*.lib",
-		"*.so",
-		"*.dylib",
-		"*.ncb",
-		"*.sdf",
-		"*.suo",
-		"*.pdb",
-		"*.idb",
-		".DS_Store",
-		"*.class",
-		"*.psd"
-	],
-	"folder_exclude_patterns":
-	[
-		".svn",
-		".git",
-		".hg",
-		"CVS",
-		"*.egg",
-		"*.egg-info",
-		"__pycache__"
-	],
-	"font_size": 9,
-	"hot_exit": false,
-	"ignored_packages":
-	[
-		"Vintage",
-		"Gist",
-		"i3 wm"
-	],
-	"remember_open_files": false,
-	"show_encoding": true,
-	"show_line_endings": true,
-	"tab_size": 4,
-	"translate_tabs_to_spaces": true,
-	"use_tab_stops": false
+    "always_show_minimap_viewport": true,
+    "default_line_ending": "windows",
+    "dictionary": "Packages/Language - English/en_GB.dic",
+    "font_face": "DejaVuSansMono",
+    "font_size": 9,
+    "highlight_line": true,
+    "hot_exit": false,
+    "remember_open_files": true,
+    "rulers": [100],
+    "show_encoding": true,
+    "show_line_endings": true,
+    "spell_check": true,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "use_tab_stops": false,
 }
