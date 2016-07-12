@@ -36,7 +36,7 @@ alias gita='git add'
 alias gitc='git commit -m'
 alias gitco='git checkout'
 alias gits='git status -s'
-alias gitl='git log --oneline --color'
+alias gitl='git log --oneline --color --decorate --graph --branches --remotes --tags --all'
 alias gitb='git branch --color'
 alias gitu='git reset HEAD^'
 
@@ -83,7 +83,7 @@ alias lla='ls --human-readable --group-directories-first -l --color --all'
 alias shutdown='/sbin/shutdown'
 alias g='grep'
 alias subl='LANG=en_US.UTF-8 subl'
-
+alias weather='curl wttr.in/leicester'
 
 # System Variables #
 # ================ #
