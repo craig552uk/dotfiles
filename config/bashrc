@@ -36,7 +36,7 @@ alias gita='git add'
 alias gitc='git commit -m'
 alias gitco='git checkout'
 alias gits='git status -s'
-alias gitl='git log --oneline --color --decorate'
+alias gitl='git log --oneline --color --decorate --graph --branches --remotes --tags --all'
 alias gitb='git branch --color'
 alias gitu='git reset HEAD^'
 

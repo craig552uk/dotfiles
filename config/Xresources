@@ -1,7 +1,7 @@
 !True-Type font
 !Requires package xfonts-base
 XTerm*renderFont: true
-XTerm*faceName: Droid
-XTerm*faceSize: 10
+XTerm*faceName: DejaVuSansMono
+XTerm*faceSize: 8
 XTerm*background: black
 XTerm*foreground: white
