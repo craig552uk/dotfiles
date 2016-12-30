@@ -1,0 +1,17 @@
+[push]
+        default = current
+[credential]
+        helper = cache --timeout=3600
+[user]
+        name = Craig Russell
+        email = craig@craig-russell.co.uk
+[alias]
+        lg = log --oneline --color --decorate --graph --branches --tags
+        ll = log --oneline --color --decorate --graph --branches --tags --remotes --all
+        c  = commit -m
+        co = checkout
+        rb = rebase
+        f  = fetch
+        m  = merge --no-ff
+        s  = status --short
+        a  = add

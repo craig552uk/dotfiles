@@ -31,15 +31,6 @@ PROMPT_COMMAND=pre_prompt_print
 PS1="$bldgrn\u$txtrst@$bldpur\h$txtrst:$bldblu\w$txtrst $bldpur\${GIT_BRANCH}$txtrst\n$bldylw\!$txtrst> "
 #PS1="\u@\h:\w \${GIT_BRANCH}\n\!> "
 
-# Git aliases
-alias gita='git add'
-alias gitc='git commit -m'
-alias gitco='git checkout'
-alias gits='git status -s'
-alias gitl='git log --oneline --color --decorate --graph --branches --remotes --tags --all'
-alias gitb='git branch --color'
-alias gitu='git reset HEAD^'
-
 # Pretty print JSON
 alias jsonpp='python -mjson.tool'
 
@@ -96,13 +87,6 @@ export PATH=$PATH:$HOME/.composer/vendor/bin
 
 # GPG Key
 export GPGKEY='AAED4905'
-
-# Git Config
-export GIT_AUTHOR_EMAIL='craig@craig-russell.co.uk'
-export GIT_AUTHOR_NAME='Craig Russell'
-export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
-export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
-
 
 # Helper Functions #
 # ================ #
