@@ -1,0 +1,97 @@
+#!/usr/bin/python
+# 
+# Returns a JSON object of system stats
+# 
+#   apt-get install -y python-psutil
+
+import os
+import time
+import json
+import psutil
+import argparse
+from datetime import timedelta
+from collections import namedtuple
+
+parser = argparse.ArgumentParser(description='System Monitor')
+parser.add_argument('-m', '--mountpoint', action="append", help='a disk partition to monitor')
+parser.add_argument('-p', '--pid',        action="append", type=int, help='a process id to monitor')
+
+
+def time_stamp():
+    """ Return formatted time string """
+    return time.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def uptime():
+    """ Return a named tuple of uptime figures """
+    try:
+        nt = namedtuple("uptime", "uptime_sec uptime_str")
+        with open("/proc/uptime", "r") as f:
+            uptime_sec = float(f.readline().split()[0])
+            uptime_str = str(timedelta(seconds = uptime_sec))
+            return nt(uptime_sec=uptime_sec, uptime_str=uptime_str)
+    except(OSError):
+        return nt(None, None)
+
+
+def load_av():
+    """ Return a named tuple of load average figures """
+    try:
+        nt = namedtuple("load_average", "min_1 min_5 min_15")
+        min_1, min_5, min_15 = os.getloadavg()
+        return nt(min_1=min_1, min_5=min_5, min_15=min_15)
+    except(OSError):
+        return nt(min_1=None, min_5=None, min_15=None)
+
+
+def to_dict(namedtuple):
+    """ Convert named tuple to dictionary """
+    return { k:v for k,v in namedtuple.__dict__.items() }
+
+
+if __name__ == "__main__":
+
+    # Parse CLI arguments
+    args = parser.parse_args()
+
+    # Time stamp
+    tick = { "time_stamp": time_stamp() }
+
+    # Uptime
+    tick["uptime"] = to_dict(uptime())
+
+    # Load Average
+    tick["load"]   = to_dict(load_av())
+
+    # CPU usage
+    tick["cpu"]    = to_dict(psutil.cpu_times_percent(interval=1, percpu=False))
+    tick["memory"] = to_dict(psutil.virtual_memory())
+    tick["swap"]   = to_dict(psutil.swap_memory())
+
+    # Get stats for partitions provided on CLI
+    tick["disk"] = {}
+    for path in args.mountpoint:
+        try:
+            tick["disk"][path] = to_dict(psutil.disk_usage(path))
+        except:
+            continue
+
+    # Get stats for PIDs provided on CLI
+    tick["process"] = {}
+    for p in args.pid:
+        proc = psutil.Process(p)
+        d =  {}
+        d["name"]        = proc.name()
+        d["exe"]         = proc.exe()
+        d["cmdline"]     = proc.cmdline()
+        d["pid"]         = proc.pid
+        d["ppid"]        = proc.ppid()
+        d["status"]      = proc.status()
+        d["username"]    = proc.username()
+        d["num_threads"] = proc.num_threads()
+        tick["process"][proc.name()] = d
+
+    # Network I/O
+    tick["net"] = { k: to_dict(v) for k,v in psutil.net_io_counters(pernic=True).items() }
+
+    print json.dumps(tick)
