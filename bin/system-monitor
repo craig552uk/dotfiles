@@ -65,31 +65,35 @@ if __name__ == "__main__":
 
     # CPU usage
     tick["cpu"]    = to_dict(psutil.cpu_times_percent(interval=1, percpu=False))
-    tick["memory"] = to_dict(psutil.virtual_memory())
-    tick["swap"]   = to_dict(psutil.swap_memory())
+
+    tick["mem"] = {}
+    tick["mem"]["ram"]  = to_dict(psutil.virtual_memory())
+    tick["mem"]["swap"] = to_dict(psutil.swap_memory())
 
     # Get stats for partitions provided on CLI
-    tick["disk"] = {}
-    for path in args.mountpoint:
-        try:
-            tick["disk"][path] = to_dict(psutil.disk_usage(path))
-        except:
-            continue
+    if args.mountpoint != None:
+        tick["disk"] = {}
+        for path in args.mountpoint:
+            try:
+                tick["disk"][path] = to_dict(psutil.disk_usage(path))
+            except:
+                continue
 
     # Get stats for PIDs provided on CLI
-    tick["process"] = {}
-    for p in args.pid:
-        proc = psutil.Process(p)
-        d =  {}
-        d["name"]        = proc.name()
-        d["exe"]         = proc.exe()
-        d["cmdline"]     = proc.cmdline()
-        d["pid"]         = proc.pid
-        d["ppid"]        = proc.ppid()
-        d["status"]      = proc.status()
-        d["username"]    = proc.username()
-        d["num_threads"] = proc.num_threads()
-        tick["process"][proc.name()] = d
+    if args.pid != None:
+        tick["process"] = {}
+        for p in args.pid:
+            proc = psutil.Process(p)
+            d =  {}
+            d["name"]        = proc.name()
+            d["exe"]         = proc.exe()
+            d["cmdline"]     = proc.cmdline()
+            d["pid"]         = proc.pid
+            d["ppid"]        = proc.ppid()
+            d["status"]      = proc.status()
+            d["username"]    = proc.username()
+            d["num_threads"] = proc.num_threads()
+            tick["process"][proc.name()] = d
 
     # Network I/O
     tick["net"] = { k: to_dict(v) for k,v in psutil.net_io_counters(pernic=True).items() }
