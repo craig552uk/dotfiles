@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # 
 # Returns a JSON object of system stats
+# Optionally maintain an array of data over time in a JSON file
 # 
 #   apt-get install -y python-psutil
 
@@ -14,7 +15,9 @@ from collections import namedtuple
 
 parser = argparse.ArgumentParser(description='System Monitor')
 parser.add_argument('-m', '--mountpoint', action="append", help='a disk partition to monitor')
-parser.add_argument('-p', '--pid',        action="append", type=int, help='a process id to monitor')
+parser.add_argument('-p', '--pid', action="append", type=int, help='a process id to monitor')
+parser.add_argument('-f', '--file', type=str, help='Write JSON array of tick data to file')
+parser.add_argument('-n', '--number-of-ticks', type=int, help='Max number of ticks to store in file')
 
 
 def time_stamp():
@@ -49,7 +52,7 @@ def to_dict(namedtuple):
     return { k:v for k,v in namedtuple.__dict__.items() }
 
 
-def do_tick(mountpoints = [], pids = []):
+def do_tick(mountpoints, pids):
     """ Generate data tick """
     
     # Time stamp
@@ -69,7 +72,7 @@ def do_tick(mountpoints = [], pids = []):
     tick["mem"]["swap"] = to_dict(psutil.swap_memory())
 
     # Get stats for partitions provided on CLI
-    if mountpoints != None:
+    if mountpoints:
         tick["disk"] = {}
         for path in mountpoints:
             try:
@@ -78,7 +81,7 @@ def do_tick(mountpoints = [], pids = []):
                 continue
 
     # Get stats for PIDs provided on CLI
-    if pids != None:
+    if pids:
         tick["process"] = {}
         for pid in pids:
             proc = psutil.Process(pid)
@@ -104,5 +107,35 @@ if __name__ == "__main__":
     # Parse CLI arguments
     args = parser.parse_args()
 
-    # Dump tick
-    print json.dumps(do_tick(mountpoints = args.mountpoint, pids = args.pid))
+    if args.file:
+        with open(args.file, "rw+") as f:
+
+            # Read file contents or default
+            data = f.read().replace("\n", "")
+            data = data if len(data) > 0 else "[]"
+
+            # Parse json or default
+            try:    data = json.loads(data)
+            except: data = []
+
+            # Append latest tick to list
+            data.append(do_tick(mountpoints = args.mountpoint, pids = args.pid))
+
+            # Delete all but last n entries
+            if args.number_of_ticks:
+                data = data[-args.number_of_ticks:]
+
+            # Convert to JSON
+            data = json.dumps(data)
+
+            # Overwrite file with updated data
+            f.seek(0)
+            f.write(data)
+            f.truncate()
+
+            # Write to stdout
+            print data
+
+    else:
+        # Write out current tick
+        print json.dumps(do_tick(mountpoints = args.mountpoint, pids = args.pid))
