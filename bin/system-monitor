@@ -49,11 +49,9 @@ def to_dict(namedtuple):
     return { k:v for k,v in namedtuple.__dict__.items() }
 
 
-if __name__ == "__main__":
-
-    # Parse CLI arguments
-    args = parser.parse_args()
-
+def do_tick(mountpoints = [], pids = []):
+    """ Generate data tick """
+    
     # Time stamp
     tick = { "time_stamp": time_stamp() }
 
@@ -71,19 +69,19 @@ if __name__ == "__main__":
     tick["mem"]["swap"] = to_dict(psutil.swap_memory())
 
     # Get stats for partitions provided on CLI
-    if args.mountpoint != None:
+    if mountpoints != None:
         tick["disk"] = {}
-        for path in args.mountpoint:
+        for path in mountpoints:
             try:
                 tick["disk"][path] = to_dict(psutil.disk_usage(path))
             except:
                 continue
 
     # Get stats for PIDs provided on CLI
-    if args.pid != None:
+    if pids != None:
         tick["process"] = {}
-        for p in args.pid:
-            proc = psutil.Process(p)
+        for pid in pids:
+            proc = psutil.Process(pid)
             d =  {}
             d["name"]        = proc.name()
             d["exe"]         = proc.exe()
@@ -98,4 +96,13 @@ if __name__ == "__main__":
     # Network I/O
     tick["net"] = { k: to_dict(v) for k,v in psutil.net_io_counters(pernic=True).items() }
 
-    print json.dumps(tick)
+    return tick
+
+
+if __name__ == "__main__":
+
+    # Parse CLI arguments
+    args = parser.parse_args()
+
+    # Dump tick
+    print json.dumps(do_tick(mountpoints = args.mountpoint, pids = args.pid))
